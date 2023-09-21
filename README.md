@@ -13,8 +13,10 @@ This will simply launch `BOOT.NDS` homebrew on the root of the NAND. Only homebr
 1. Download [dsxTool](https://github.com/ApacheThunder/dsxTool)
 1. Copy `dsx_firmware.nds` and `dsxTool.nds` to your DS-Xtreme's root
 1. Boot your DS-Xtreme, and launch dsxTool
-1. Press X to flash `dsx_firmware.nds` to your DS-Xtreme
-1. After finishing, reboot and see your changes live!
+1. Press `A` to dump your current firmware and wait for it to finish
+	- You will need this if you ever wish to easily revert to your old firmware. You never know when that is!
+1. Press `X` to flash `dsx_firmware.nds` to your DS-Xtreme and wait for it to finish
+1. After the process is complete, reboot and see your changes live!
 
 ### License
 
