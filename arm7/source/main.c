@@ -1,5 +1,6 @@
 /*
-	flashcard-bootstrap
+	DSXulu
+	DS-Xtreme Universal Loader
 	By lifehackerhansol
 
 	SPDX-License-Identifier: 0BSD
