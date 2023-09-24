@@ -14,6 +14,15 @@
 
 #include "nds_loader_arm9.h"
 
+void PrintProgramName() {
+	consoleClear();
+	printf("\n");
+	printf("<------------------------------>\n");
+	printf("            DSXulu              \n");
+	printf("   DS-Xtreme Universal Loader   \n");
+	printf("<------------------------------>\n\n");
+}
+
 int exitBootstrap(void) {
 	iprintf("Press START to power off.");
 	while(1) {
@@ -28,18 +37,25 @@ int exitBootstrap(void) {
 
 int main(void) {
 	consoleDemoInit();
-	iprintf("DSXulu\nDS-Xtreme Universal Loader\n\n");
+	// Change console palette so text is black and background is white
+	BG_PALETTE_SUB[0] = RGB15(31,31,31);
+	BG_PALETTE_SUB[255] = RGB15(0,0,0);
+	PrintProgramName();
+	iprintf("Loading...\n");
 	if (!fatInitDefault()) 
 	{
+		PrintProgramName();
 		iprintf("FAT init failed!\n");
 		return exitBootstrap();
 	}
 	if(access("/boot.nds", F_OK) != 0)
 	{
+		PrintProgramName();
 		iprintf("/boot.nds not found!\n");
 		return exitBootstrap();
 	}
 	int err = runNdsFile("/boot.nds", 0, NULL);
+	PrintProgramName();
 	iprintf("Bootloader returned error %d\n", err);
 	return exitBootstrap();
 }
