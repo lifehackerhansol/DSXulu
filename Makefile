@@ -62,4 +62,6 @@ arm9/$(TARGET).elf: bootloader
 clean:
 	$(MAKE) -C arm9 clean
 	$(MAKE) -C arm7 clean
+	$(MAKE) -C bootloader clean
+	rm -rf data
 	rm -f $(TARGET).nds
