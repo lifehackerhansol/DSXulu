@@ -1,31 +1,44 @@
 /*
 	DSXulu
 	DS-Xtreme Universal Loader
-	By lifehackerhansol
+	Copyright (c) 2023 lifehackerhansol
 
-	SPDX-License-Identifier: 0BSD
+	Default ARM7 core
+	Copyright (c) 2005-2010 Michael Noland (joat)
+	Copyright (c) 2005-2010 Jason Rogers (dovoto)
+	Copyright (c) 2005-2010 Dave Murphy (WinterMute)
+
+	SPDX-License-Identifier: Zlib
 */
 
 #include <nds.h>
 
-void VblankHandler(void) {
+volatile bool exitflag = false;
+
+void powerButtonCB() {
+	exitflag = true;
 }
 
 int main(void) {
+	// clear sound registers
+	dmaFillWords(0, (void*)0x04000400, 0x100);
+
+	readUserSettings();
 	ledBlink(0);
 
 	irqInit();
+	initClockIRQ();
 	fifoInit();
 	installSystemFIFO();
-	irqSet(IRQ_VBLANK, VblankHandler);
-	irqEnable(IRQ_VBLANK);
 
-	while(1) {
+	setPowerButtonCB(powerButtonCB);
+
+	while (!exitflag) {
 		swiWaitForVBlank();
 
 		if(fifoCheckValue32(FIFO_USER_01)) {
 			fifoGetValue32(FIFO_USER_01);
-			break;
+			exitflag = true;
 		}
 	}
 	return 0;

@@ -8,6 +8,8 @@ This is a custom firmware for the DS-Xtreme.
 
 This will simply launch `BOOT.NDS` homebrew on the root of the NAND. Only homebrew files are supported (not that the DS-Xtreme really supports any games anyway.)
 
+If `BOOT.NDS` is not found, it will fall back to a built in file browser.
+
 ### Flashing instructions
 
 1. Download [dsxTool](https://github.com/ApacheThunder/dsxTool)
@@ -20,11 +22,10 @@ This will simply launch `BOOT.NDS` homebrew on the root of the NAND. Only homebr
 
 ### License
 
-Major portions of this code are licensed under GPL-2.0-or-later (particularly, nds-bootloader and nds_loader_arm9.)
 ```
-	Copyright (C) 2005 - 2010
-		Michael "Chishm" Chisholm
-		Dave "WinterMute" Murphy
+	NDS Homebrew Menu
+	Copyright (C) 2005-2013 Michael Chisholm (Chishm)
+	Copyright (C) 2005-2023 Dave Murphy (WinterMute)
 
 	This program is free software; you can redistribute it and/or
 	modify it under the terms of the GNU General Public License
@@ -40,5 +41,3 @@ Major portions of this code are licensed under GPL-2.0-or-later (particularly, n
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ```
-
-All other source code files are licensed under the 0BSD license.
