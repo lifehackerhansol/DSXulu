@@ -51,7 +51,7 @@ void InitGUI (void) {
 	keysSetRepeat(25,5);
 }
 
-int FileBrowser(int argc, char argv) {
+int FileBrowser() {
 	InitGUI();
 	chdir("/nds");
 	vector<string> extensionList = argsGetExtensionList();
@@ -79,9 +79,7 @@ int FileBrowser(int argc, char argv) {
 	}
 }
 
-//---------------------------------------------------------------------------------
-int main(int argc, char **argv) {
-//---------------------------------------------------------------------------------
+int main(void) {
 	// overwrite reboot stub identifier
 	// so tapping power on DSi returns to DSi menu
 	extern u64 *fake_heap_end;
@@ -98,7 +96,7 @@ int main(int argc, char **argv) {
 		return exitProgram();
 	} else {
 		// Fire up the file browser GUI if boot.nds isn't found
-		return FileBrowser(argc, **argv);
+		return FileBrowser();
 	}
 	return 0;
 }
